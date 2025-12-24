@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply font-body bg-beige-100 text-matte-800 overflow-x-hidden;
+  }
+  
+  body.dark {
+    @apply bg-matte-900 text-beige-200;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold;
+  }
+  
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply px-8 py-4 bg-gold text-matte-900 font-body font-semibold text-sm uppercase tracking-wider
+           rounded-none border-2 border-gold
+           transition-all duration-300 ease-out
+           hover:bg-transparent hover:text-gold
+           focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2
+           active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply px-8 py-4 bg-transparent text-gold font-body font-semibold text-sm uppercase tracking-wider
+           rounded-none border-2 border-gold
+           transition-all duration-300 ease-out
+           hover:bg-gold hover:text-matte-900
+           focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2
+           active:scale-95;
+  }
+  
+  .btn-dark {
+    @apply px-8 py-4 bg-matte-800 text-beige-100 font-body font-semibold text-sm uppercase tracking-wider
+           rounded-none border-2 border-matte-800
+           transition-all duration-300 ease-out
+           hover:bg-matte-700
+           focus:outline-none focus:ring-2 focus:ring-matte-600 focus:ring-offset-2
+           active:scale-95;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .glass-dark {
+    @apply bg-matte-900/80 backdrop-blur-lg border border-matte-700/50;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24;
+  }
+  
+  .gold-underline {
+    @apply relative inline-block;
+  }
+  
+  .gold-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-gold transform scale-x-0 origin-left transition-transform duration-300;
+  }
+  
+  .gold-underline:hover::after {
+    @apply scale-x-100;
+  }
+  
+  .card-luxury {
+    @apply bg-white rounded-sm overflow-hidden shadow-lg
+           transition-all duration-500 ease-out
+           hover:shadow-2xl hover:shadow-gold/10
+           hover:-translate-y-2;
+  }
+  
+  .card-luxury.dark {
+    @apply bg-matte-800 border border-matte-700;
+  }
+  
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+  
+  .divider-gold {
+    @apply w-20 h-0.5 bg-gold mx-auto;
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-beige-300;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-wood-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-wood-700;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-matte-800;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-gold/50;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold;
+  }
+}
+
+/* Skeleton Loader */
+.skeleton {
+  @apply animate-pulse bg-gradient-to-r from-beige-300 via-beige-200 to-beige-300 bg-[length:200%_100%];
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Custom Selection */
+::selection {
+  @apply bg-gold/30 text-matte-900;
+}
+
+/* Image lazy loading placeholder */
+.img-loading {
+  @apply bg-beige-300 animate-pulse;
+}
+
+/* Gold glow effect */
+.gold-glow {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.gold-glow:hover {
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+}
